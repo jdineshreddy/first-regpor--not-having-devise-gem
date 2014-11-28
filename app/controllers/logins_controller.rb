@@ -1,26 +1,31 @@
 
 class LoginsController < ApplicationController
+  layout "special_layout", except: [:show, :destroy,:forgot_password,:forgot,
+                                    :password_change,:update,:psword_change_for_login_customer,:pd_update_for_login_customers,:deactivate ]
+
+
   def new
+
   end
   def create
-      customer = Customer.authenticate(params[:username], params[:password])
-      if customer
-        session[:customer_id] = customer.id
-        flash[:notice] = "Logged in!"
-        redirect_to action: :show
-      else
-        flash[:error] = "Invalid Username or Password"
-        render "new"
-      end
+    customer = Customer.authenticate(params[:username], params[:password])
+    if customer
+      session[:customer_id] = customer.id
+      flash[:notice] = "Logged in!"
+      redirect_to action: :show
+    else
+      flash[:error] = "Invalid Username or Password"
+      render "new"
+    end
   end
 
 
   def show
-     if session[:customer_id].nil?
+    if session[:customer_id].nil?
       render "new"
     else
-    @customer = CustomersProfile.find_by_customer_id( session[:customer_id])
-     end
+      @customer = CustomersProfile.find_by_customer_id( session[:customer_id])
+    end
   end
 
 
@@ -52,8 +57,8 @@ class LoginsController < ApplicationController
     if Customer.where(password_reset_token: params[:id]).exists?(conditions = :none)
       @user = Customer.find_by_password_reset_token!(params[:id])
     else
-    flash[:notice]='Password already changed'
-    render 'new'
+      flash[:notice]='Password already changed'
+      render 'new'
     end
   end
 
@@ -77,8 +82,8 @@ class LoginsController < ApplicationController
       flash[:notice]='Password Changed'
       redirect_to :action => 'new'
     else
-     flash[:error]='password and connformation password should be same or password length is 6 to 14 characters'
-    redirect_to :back
+      flash[:error]='password and connformation password should be same or password length is 6 to 14 characters'
+      redirect_to :back
     end
 
   end
@@ -93,5 +98,7 @@ class LoginsController < ApplicationController
     flash[:notice]='Account Deactivated'
     redirect_to :action => 'new'
   end
+
+
 
 end

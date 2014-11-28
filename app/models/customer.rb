@@ -4,7 +4,7 @@ class Customer < ActiveRecord::Base
 
   has_many :posts
   has_one :customers_profile
-  accepts_nested_attributes_for :customers_profile
+  accepts_nested_attributes_for :customers_profile          #, allow_destroy: true for deleating nested attributes
   attr_accessor :password,:password_confirmation
   before_save :encrypt_password
 
@@ -12,7 +12,7 @@ class Customer < ActiveRecord::Base
   validates :username,presence: true, length: {in: 3..14,message: 'Username already exists'}, uniqueness: true,
             format: { with: /\A[a-zA-Z0-9]+\Z/, message: "allows only letters and number without any special characters and space" }
   validates :email,uniqueness: true, format: { with: /\A[^@\s]+@([^@.\s]+\.)*[^@.\s]+\z/ }
-  validates :password, confirmation: true,length: {in: 6..14,message: 'atleast 6 characters'}
+  validates :password, confirmation: true,length: {in: 2..14,message: 'atleast 6 characters'}
   validates :password_confirmation, presence: true
 
 

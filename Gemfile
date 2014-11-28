@@ -50,6 +50,8 @@ gem "hirb"
 gem "simple_calendar", "~> 1.1.0"
 
 gem 'devise'
+
+gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

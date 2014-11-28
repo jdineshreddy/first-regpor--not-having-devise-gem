@@ -44,6 +44,9 @@
         <td><%=s.label :dob, "DATE OF BIRTH" %></td>
         <td><%=s.date_field :dob%></td>
       </tr>
+      <!-- <tr> _destroy is used for not creating and saving nested attribute field into database but customer fields are saved inthe database. don't forgot to add _destroy to customer controller strong paramaters
+      <td><%= s.check_box :_destroy%></td>
+      </tr> -->
       <tr>
         <td><%=s.label :gender, 'GENDER: '%></td>
         <td><%=s.label :gender, 'MALE'%>
