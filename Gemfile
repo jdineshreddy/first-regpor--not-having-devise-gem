@@ -40,6 +40,7 @@ gem 'country_select'
 gem 'rails4-autocomplete', '~> 1.1.1'
 
 gem 'carrierwave'
+gem 'carrierwave-crop'
 gem "mini_magick"
 
 gem 'activeadmin', github: 'activeadmin'
@@ -49,9 +50,8 @@ gem "hirb"
 
 gem "simple_calendar", "~> 1.1.0"
 
-gem 'devise'
 
-gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+gem 'rabl'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

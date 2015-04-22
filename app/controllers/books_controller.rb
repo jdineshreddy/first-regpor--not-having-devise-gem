@@ -13,10 +13,18 @@ class BooksController < ApplicationController
 
   def create
     @book=Book.new(book_params)
+    #byebug
     if @book.save!
+      #if params[:book][:image_attributes].present?
+       # render :crop  ## Render the view for cropping
+      #else
+      #   redirect_to @user, notice: 'User was successfully created.'
+
+
       @book.update(author_id:  @book.author.id )
       flash[:notice]="Added new BOOK"
       redirect_to :action => 'index'
+      #end
     end
   end
 
@@ -61,7 +69,7 @@ class BooksController < ApplicationController
 
   private
   def book_params
-    params.require(:book).permit(:name, :published_by, :price,
+    params.require(:book).permit(:name, :published_by, :price,:avatar_crop_x, :avatar_crop_y, :avatar_crop_w, :avatar_crop_h,
                                  author_attributes: [:author_name ],image_attributes: [:img ])
   end
 

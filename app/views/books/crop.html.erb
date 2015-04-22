@@ -1,0 +1,15 @@
+<%= form_for @book do |f| %>
+
+
+    <%= f.fields_for :image do |i| %>
+
+        <%= i.cropbox :img %>
+        <%= i.previewbox :img %>
+
+
+    <% end %>
+
+
+
+    <%= f.submit 'Crop' %>
+<% end %>

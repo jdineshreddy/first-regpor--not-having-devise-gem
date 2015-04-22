@@ -6,6 +6,6 @@
     <% end %>
   </tr>
 </table>
-by <i style="color: #1d2fe2" > <%= p.customer.username%> </i>&nbsp; &nbsp;on <i style="color: #1d2fe2"> <%=p.created_at.strftime("%d %b. %Y")%> </i>&nbsp;
+by <i style="color: #1d2fe2" > <%#= p.customer.username%> </i>&nbsp; &nbsp;on <i style="color: #1d2fe2"> <%=p.created_at.strftime("%d %b. %Y")%> </i>&nbsp;
 at <i style="color: #1d2fe2"> <%=  p.created_at.in_time_zone("Chennai").strftime("%H:%M:%S") %></i>
 <br><br>

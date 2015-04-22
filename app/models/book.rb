@@ -8,7 +8,7 @@ class Book < ActiveRecord::Base
   accepts_nested_attributes_for :author
 
 
-  validates :name,presence: true,uniqueness: true
+  validates :name,presence: true
   validates :published_by, presence: true
   validates :price,numericality: true
 
@@ -21,6 +21,19 @@ class Book < ActiveRecord::Base
     end
 
   end
+
+  # another way of defining class methods
+=begin
+  class << self
+    def search(query)
+      if query
+        where('name LIKE  ? ', "%#{query}%")
+      else
+        all
+      end
+    end
+  end
+=end
 
 
 end

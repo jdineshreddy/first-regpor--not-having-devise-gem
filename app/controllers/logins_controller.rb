@@ -1,8 +1,13 @@
 
 class LoginsController < ApplicationController
-  layout "special_layout", except: [:show, :destroy,:forgot_password,:forgot,
+  layout "special_layout", except: [:index,:show, :destroy,:forgot_password,:forgot,
                                     :password_change,:update,:psword_change_for_login_customer,:pd_update_for_login_customers,:deactivate ]
 
+
+
+  def index
+    @users = Customer.all
+  end
 
   def new
 
